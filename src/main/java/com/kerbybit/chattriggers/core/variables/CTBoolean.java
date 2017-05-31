@@ -17,9 +17,14 @@ public class CTBoolean implements Variable {
     }
 
     @Override
-    public void call(String operation, String[] args) {
+    public void call(String operation, String args) {
         switch (operation) {
 
         }
+    }
+
+    @Override
+    public String getStringValue() {
+        return value.toString();
     }
 }

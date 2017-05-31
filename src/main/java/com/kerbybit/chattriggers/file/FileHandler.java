@@ -13,6 +13,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import com.kerbybit.chattriggers.core.triggers.Trigger;
 import com.kerbybit.chattriggers.globalvars.Settings;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -30,7 +31,6 @@ public class FileHandler {
             lines.add(line);
         }
         bufferedReader.close();
-
         return lines;
     }
 
@@ -310,10 +310,7 @@ public class FileHandler {
 			    String type = lines.get(i).substring(lines.get(i).indexOf("trigger ")+8, lines.get(i).indexOf("("));
 			    String trigger = lines.get(i).substring(lines.get(i).indexOf("(")+1, lines.get(i).length()-3);
 
-			    String importTag = "";
-			    if (isImport) {
-			        importTag="<imported>";
-                }
+			    String importTag = isImport ? "<imported>" : "";
 
                 String typeExtra = "";
                 if (lines.get(i+1) != null) {
@@ -651,6 +648,9 @@ public class FileHandler {
 		try {
 		    //backup
             backupDefaultFiles();
+
+			//////EXPERIMENTAL
+			//for (Trigger trigger : global.triggers.values()) trigger.clearHandlers();
 
 			CommandReference.clearTriggerList();
 			global.trigger = loadTriggers("./mods/ChatTriggers/triggers.txt", false, null);

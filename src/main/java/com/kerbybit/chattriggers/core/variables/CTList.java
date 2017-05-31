@@ -19,9 +19,14 @@ public class CTList implements Variable {
     }
 
     @Override
-    public void call(String operation, String[] args) {
+    public void call(String operation, String args) {
         switch (operation) {
 
         }
+    }
+
+    @Override
+    public String getStringValue() {
+        return values.toString();
     }
 }

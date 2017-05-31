@@ -1,7 +1,7 @@
 package com.kerbybit.chattriggers.globalvars;
 
-import net.minecraft.client.audio.ISound;
-import net.minecraftforge.client.event.sound.PlaySoundEvent;
+import com.kerbybit.chattriggers.core.triggers.Trigger;
+import com.kerbybit.chattriggers.core.variables.Variable;
 
 import java.util.*;
 
@@ -131,4 +131,9 @@ public class global {
         result[result.length-1] = value;
         return result;
     }
+
+
+    /////////////EXPERIMENTAL///////////////
+	public static HashMap<String, Variable> variables = new HashMap<>();
+    public static HashMap<String, Trigger> triggers = new HashMap<>();
 }

@@ -1,36 +1,44 @@
 package com.kerbybit.chattriggers.core.variables;
 
+import net.minecraft.util.ChatComponentText;
+
 public class CTString implements Variable {
 
     private String value;
 
-    public CTString (String value) {
+    public CTString(String value) {
         this.value = value;
     }
 
-    public String get () {
+    public String get() {
         return value;
     }
 
-    public void set (String newVal) {
+    public void set(String newVal) {
         value = newVal;
     }
 
     @Override
-    public void call (String operation, String[] args) {
+    public void call(String operation, String args) {
         switch (operation.toLowerCase()) {
             case "append":
                 opAppend(args);
+			case "remform":
+				opRemForm();
         }
     }
 
-    private void opAppend (String[] args) {
-        StringBuilder sb = new StringBuilder(value);
+	@Override
+	public String getStringValue() {
+		return value;
+	}
 
-        for (String toAppend : args) {
-            sb.append(toAppend);
-        }
+	private void opAppend (String args) {
+		value += args;
+    }
 
-        value = sb.toString();
+    private void opRemForm() {
+		ChatComponentText cct = new ChatComponentText(value);
+		value = cct.getUnformattedText();
     }
 }

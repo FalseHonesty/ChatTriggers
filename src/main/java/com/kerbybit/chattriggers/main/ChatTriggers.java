@@ -3,6 +3,10 @@ package com.kerbybit.chattriggers.main;
 import java.io.IOException;
 
 import com.kerbybit.chattriggers.commands.CommandReference;
+import com.kerbybit.chattriggers.core.events.CTChatEvent;
+import com.kerbybit.chattriggers.core.handlers.ChatTriggerHandler;
+import com.kerbybit.chattriggers.core.handlers.Handler;
+import com.kerbybit.chattriggers.core.triggers.CTChatTrigger;
 import com.kerbybit.chattriggers.gui.DisplayOverlay;
 import com.kerbybit.chattriggers.references.AsyncHandler;
 import com.kerbybit.chattriggers.references.BugTracker;
@@ -62,6 +66,12 @@ public class ChatTriggers {
 
         ClientRegistry.registerKeyBinding(altGuiKey);
         ClientRegistry.registerKeyBinding(displayKey);
+
+		/////EXPERIMENTAL - WORKS!
+        /*global.triggers.put("onChat", new CTChatTrigger());
+        ChatTriggerHandler handler = new ChatTriggerHandler();
+        handler.addEvent(new CTChatEvent("Gud memes!"));
+        global.triggers.get("onChat").addHandler(handler);*/
 	}
 	
 	@SubscribeEvent
