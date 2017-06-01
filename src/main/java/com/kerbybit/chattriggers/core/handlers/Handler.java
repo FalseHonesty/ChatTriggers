@@ -5,7 +5,8 @@ import com.kerbybit.chattriggers.core.events.CTEvent;
 import java.util.ArrayList;
 
 public class Handler {
-	ArrayList<CTEvent> events;
+	protected ArrayList<CTEvent> events;
+	protected String name;
 
 	public Handler() {
 		events = new ArrayList<>();

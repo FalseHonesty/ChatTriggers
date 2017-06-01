@@ -6,8 +6,8 @@ import com.kerbybit.chattriggers.globalvars.global;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 
 public abstract class CTEvent {
-	String name;
-	String args;
+	protected String name;
+	protected String args;
 
 	public abstract void call();
 

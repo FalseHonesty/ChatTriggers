@@ -5,8 +5,10 @@ import net.minecraftforge.client.event.ClientChatReceivedEvent;
 
 public class ChatTriggerHandler extends Handler {
 
-	public ChatTriggerHandler() {
+	public ChatTriggerHandler(String name) {
 		super();
+
+		this.name = name == null || name == "" ? "chat" : name;
 	}
 
 	public void handleEvents(ClientChatReceivedEvent event) {

@@ -6,7 +6,7 @@ import net.minecraftforge.common.MinecraftForge;
 import java.util.ArrayList;
 
 public abstract class Trigger {
-	ArrayList<Handler> handlers;
+	protected ArrayList<Handler> handlers;
 
 	public Trigger() {
 		handlers = new ArrayList<>();

@@ -8,6 +8,10 @@ public class CTBoolean implements Variable {
         this.value = value;
     }
 
+    public CTBoolean(String toParse) {
+    	//TODO: PARSE TO VALUE
+	}
+
     public Boolean get() {
         return value;
     }
