@@ -11,6 +11,9 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
+/**
+ * Copyright (c) FalseHonesty 2017
+ */
 public class BookData {
 	private ItemStack backingBook;
 	private NBTTagCompound bookPageData;

@@ -68,6 +68,14 @@ public class ChatTriggers {
         ClientRegistry.registerKeyBinding(altGuiKey);
         ClientRegistry.registerKeyBinding(displayKey);
         ClientRegistry.registerKeyBinding(displayMenuKey);
+
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            try {
+                FileHandler.saveAll();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }));
 	}
 	
 	@SubscribeEvent

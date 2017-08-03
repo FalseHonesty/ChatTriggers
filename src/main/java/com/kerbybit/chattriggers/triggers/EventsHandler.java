@@ -1,11 +1,8 @@
 package com.kerbybit.chattriggers.triggers;
 
-import java.awt.Desktop;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-import java.io.IOException;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +19,9 @@ import com.kerbybit.chattriggers.overlay.KillfeedHandler;
 import com.kerbybit.chattriggers.overlay.NotifyHandler;
 import com.kerbybit.chattriggers.references.AsyncHandler;
 import com.kerbybit.chattriggers.references.BugTracker;
+import com.kerbybit.chattriggers.util.GuiYesNoImplementation;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiConfirmOpenLink;
 import net.minecraft.util.IChatComponent;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
@@ -30,7 +29,7 @@ import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import static com.kerbybit.chattriggers.triggers.TriggerHandler.onChat;
 
 public class EventsHandler {
-    private static String removeStringReplacements(String string) {
+    public static String removeStringReplacements(String string) {
         return string
                 .replace("stringCommaReplacementF6cyUQp9stringCommaReplacement", ",")
                 .replace("stringOpenBracketF6cyUQp9stringOpenBracket", "(")
@@ -272,11 +271,8 @@ public class EventsHandler {
                     clipboard.setContents(new StringSelection(removeStringReplacements(TMP_e)), null);
                 }
                 if (TMP_c.equalsIgnoreCase("URL")) {
-                    try {
-                        Desktop.getDesktop().browse(URI.create(removeStringReplacements(TMP_e)));
-                    } catch (IOException e) {
-                        ChatHandler.warn(ChatHandler.color("red", "Unable to open URL! IOException"));
-                    }
+                    GuiConfirmOpenLink openLinkGui = new GuiConfirmOpenLink(new GuiYesNoImplementation(TMP_e), TMP_e, 21323233, false);
+                    Minecraft.getMinecraft().displayGuiScreen(openLinkGui);
                 }
                 if (TMP_c.equalsIgnoreCase("ENABLEIMPORT")) {
                     List<String> args = new ArrayList<>();
