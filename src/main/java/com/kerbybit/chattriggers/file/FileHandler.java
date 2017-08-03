@@ -262,6 +262,7 @@ public class FileHandler {
         writer.println("lastOpened:"+dateFormat.format(date));
         writer.println("t:"+Settings.commandT);
         writer.println("tr:"+Settings.commandTR);
+        writer.print("display link warning:" + Settings.displayLinkWarning);
 
         writer.println("");
 		writer.println("killfeed pos:"+Settings.killfeedPosition[0] + " " + Settings.killfeedPosition[1]);
@@ -633,6 +634,9 @@ public class FileHandler {
                     Settings.notifyPause = 50;
                 }
             }
+            if (l.startsWith("display link warning:")) {
+				Settings.displayLinkWarning = Boolean.parseBoolean(l.substring(l.indexOf("display link warning:") + "display link warning:".length()));
+			}
 		}
 	}
 	

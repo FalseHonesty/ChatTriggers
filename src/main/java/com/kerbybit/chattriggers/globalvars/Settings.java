@@ -32,4 +32,5 @@ public class Settings {
     public static Boolean notifyBackground = true;
 
     public static Boolean killfeedBackground = false;
+    public static boolean displayLinkWarning = true;
 }

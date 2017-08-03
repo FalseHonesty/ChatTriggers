@@ -1,8 +1,10 @@
 package com.kerbybit.chattriggers.triggers;
 
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -271,8 +273,16 @@ public class EventsHandler {
                     clipboard.setContents(new StringSelection(removeStringReplacements(TMP_e)), null);
                 }
                 if (TMP_c.equalsIgnoreCase("URL")) {
-                    GuiConfirmOpenLink openLinkGui = new GuiConfirmOpenLink(new GuiYesNoImplementation(TMP_e), TMP_e, 21323233, false);
-                    Minecraft.getMinecraft().displayGuiScreen(openLinkGui);
+                    if (Settings.displayLinkWarning) {
+                        GuiConfirmOpenLink openLinkGui = new GuiConfirmOpenLink(new GuiYesNoImplementation(TMP_e), TMP_e, 21323233, false);
+                        Minecraft.getMinecraft().displayGuiScreen(openLinkGui);
+                    } else {
+                        try {
+                            Desktop.getDesktop().browse(URI.create(EventsHandler.removeStringReplacements(TMP_e)));
+                        } catch (IOException e) {
+                            ChatHandler.warn(ChatHandler.color("red", "Unable to open URL! IOException"));
+                        }
+                    }
                 }
                 if (TMP_c.equalsIgnoreCase("ENABLEIMPORT")) {
                     List<String> args = new ArrayList<>();
